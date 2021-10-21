@@ -25,6 +25,8 @@ library("tibble")
 ## Make a request to the API Server
 
 In this assignment, The New York Times, JSON data was pulled using the Developer zone Book API on their Best Sellers list [https://developer.nytimes.com/apis](https://developer.nytimes.com/apis). A request for data with a GET function and returned a list containing all of the information from the API server.
+
+
 ```{r}
 nybk <- GET("https://api.nytimes.com/svc/books/v3/lists/names.json?api-key=mRnATzHBDOaywjgsvH9402TBMw8RhxEG")
 ```
@@ -102,4 +104,4 @@ ggplot(df) +
 
 ## Conclusion
 
-In this assignment, NYTimes Developers API's, had a successful connection with `GET() function` to retrieve NYT Best Sellers Lists. A analysis was performed on `What year the Best Selling Books were published?`. The results showed a range between 2012 to 2021 and only three years (2014, 2018, and 2020) where a best selling book was not present. Although, these results are dynamic because the dataset is updated weekly.  
+In this assignment, NYTimes Developers API's, had a successful connection with `GET() function` to retrieve NYT Best Sellers Lists. A analysis was performed on `What year the Best Selling Books were published?`. The results showed a range between 2012 to 2021 and only three years (2014, 2018, and 2020) where a best selling book was not present. Although, these results are dynamic because the dataset is updated weekly and monthly.  
