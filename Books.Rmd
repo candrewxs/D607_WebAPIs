@@ -9,7 +9,7 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-Source: [GitHub]()      [RPubs]()
+Source: [GitHub](https://github.com/candrewxs/D607_WebAPIs/blob/main/Books.Rmd)      [RPubs](https://rpubs.com/blesned/nytimes)
 
 
 ## Load packages
