@@ -1,0 +1,63 @@
+---
+title: "NYTimes_WebAPIs"
+author: "Coffy Andrews-Guo"
+date: "`r format(Sys.time(), '%d %B, %Y')`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library("rvest")
+library("httr")
+```
+
+
+## Make a request to the API Server
+
+In this assignment, The Nobel Prize, JSON data was pulled using the Developer zone API from [https://www.nobelprize.org/about/developer-zone-2/](https://www.nobelprize.org/about/developer-zone-2/). A request for data with a GET function and return a list containing all of the information returned by the API server.
+```{r}
+nyt <- GET("https://api.nytimes.com/svc/movies/v2/reviews/search.json?query=knocking&api-key=jEH2eKHRjGcC6IIxQo1j4aFMB2kyZa3a")
+```
+
+A summary provides a "Status" on the success or failure of the API request, and it comes in the form of a number. A desired number 200 corresponds to a successful request. The content type indicates what form the data takes and this response has  the data in a json format.
+```{r}
+nyt      # summary look at the resulting response
+```
+
+
+```{r}
+library("jsonlite")
+```
+
+```{r}
+rawToChar(nyt$content)
+```
+
+```{r}
+nytime <- fromJSON(rawToChar(nyt$content))
+
+names(nytime)
+```
+
+
+
+## Source: https://blog.exploratory.io/working-with-json-data-in-very-simple-way-ad7ebcc0bb89
+
+```{r}
+nyt_flat <- flatten(nytime$results)
+
+str(nyt_flat)
+```
+
+
+```{r}
+library(tibble)
+
+nytimes_tbl <- as.data.frame(nyt_flat)
+
+nytimes_tbl
+```
+
